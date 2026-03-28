@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Accessible Portfolio</title>
+    <title>Christian's Portfolio</title>
     <style>
         /* Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,6 +86,37 @@
         .project-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-tech-icons {
+            list-style: none;
+            padding-left: 0;
+            margin: 14px 0 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 22px;
+            align-items: flex-start;
+        }
+
+        .project-tech-icons li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #444;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        body.dark-mode .project-tech-icons li {
+            color: #c8c8e8;
+        }
+
+        .project-tech-icons img {
+            width: 32px;
+            height: 32px;
+            display: block;
         }
 
         /* Buttons */
@@ -333,6 +364,28 @@
             <div class="project-card">
                 <h3>Mini Blog Page</h3>
                 <p>A simple blog page template displaying articles and tutorials.</p>
+                <ul class="project-tech-icons">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftsqlserver.svg" width="32" height="32" alt="" />
+                        <span>SQL</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/tableau.svg" width="32" height="32" alt="" />
+                        <span>Tableau</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/looker.svg" width="32" height="32" alt="" />
+                        <span>Looker</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoftoutlook.svg" width="32" height="32" alt="" />
+                        <span>Outlook</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/python.svg" width="32" height="32" alt="" />
+                        <span>Python</span>
+                    </li>
+                </ul>
                 <button>Show Details</button>
                 <p class="details" style="display:none">
                     Built with HTML, CSS, and JavaScript. Includes responsive layout and accessible typography.
@@ -393,7 +446,8 @@
         document.querySelectorAll('.project-card button').forEach(btn => {
             btn.textContent = 'Show Details';
             btn.addEventListener('click', () => {
-                const details = btn.nextElementSibling;
+                const card = btn.closest('.project-card');
+                const details = card && card.querySelector('.details');
                 if (details) {
                     details.style.display = details.style.display === 'none' ? 'block' : 'none';
                     btn.textContent = details.style.display === 'block' ? 'Hide Details' : 'Show Details';
